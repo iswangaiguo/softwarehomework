@@ -2,6 +2,7 @@ package com.example.udpchat;
 
 import java.awt.GridLayout;
 import java.awt.Label;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -43,8 +44,10 @@ public class UDPClient implements ActionListener, Runnable {
 
 	private void init() {
 		JFrame jFrame = new JFrame("chatClient");
-		jFrame.setSize(400, 630);
+		jFrame.setTitle("DUP聊天室");
+		jFrame.setSize(820, 350);
 		jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		jFrame.setIconImage(Toolkit.getDefaultToolkit().createImage(this.getClass().getResource("/icon.jpg")));
 		jFrame.setLayout(null);
 		chatArea = new JTextArea();
 		chatArea.setEditable(false);
@@ -54,7 +57,7 @@ public class UDPClient implements ActionListener, Runnable {
 		jFrame.add(jspChat);
 		JPanel jparam = new JPanel();
 		jparam.setLayout(new GridLayout(2, 5));
-		jparam.setBounds(0, 310, 380, 40);
+		jparam.setBounds(400, 20, 380, 40);
 		JLabel localPoatLabel = new JLabel("本地端口");
 		localPortJtf = new JTextField("9090");
 		JLabel remotePoatLabel = new JLabel("远程端口");
@@ -77,15 +80,15 @@ public class UDPClient implements ActionListener, Runnable {
 		setParam.addActionListener(this);
 		JPanel setParamjp = new JPanel();
 		setParamjp.add(setParam);
-		setParamjp.setBounds(0, 360, 380, 30);
+		setParamjp.setBounds(400, 80, 380, 30);
 		jFrame.add(setParamjp);
 		JLabel chatContent = new JLabel("发送内容:");
-		chatContent.setBounds(0, 390, 380, 20);
+		chatContent.setBounds(400, 110, 380, 20);
 		jFrame.add(chatContent);
 		inputArea = new JTextArea();
 		inputArea.setLineWrap(true);
 		JScrollPane jspInput = new JScrollPane(inputArea);
-		jspInput.setBounds(0, 410, 380, 120);
+		jspInput.setBounds(400, 130, 380, 120);
 		jFrame.add(jspInput);
 		JPanel jb = new JPanel();
 		sendMessage = new JButton("发送消息");
@@ -94,7 +97,7 @@ public class UDPClient implements ActionListener, Runnable {
 		exit.addActionListener(this);
 		jb.add(sendMessage);
 		jb.add(exit);
-		jb.setBounds(0, 540, 400, 30);
+		jb.setBounds(400, 260, 400, 30);
 		jFrame.add(jb);
 		jFrame.setVisible(true);
 	}
