@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+<title>调用服务</title>
+</head>
+<body>
+	<div class="container">
+		<h2 class="row justify-content-md-center mt-4">调用服务计算加法并返回</h2>
+		<div class="row justify-content-md-center mt-4">
+		<input class="form-control col-2" >&nbsp;&nbsp;
+			+&nbsp;&nbsp;
+		<input class="form-control col-2" >&nbsp;&nbsp;
+		<button type="button" class="btn btn-primary">等于</button>&nbsp;&nbsp;
+		<input class="form-control col-2" disabled type="number">
+		</div>
+	</div>
+<script type="text/javascript">
+	window.onload = () => {
+		document.getElementsByTagName("button")[0].onclick = () => {
+			const a = document.getElementsByTagName("input")[0].value;
+			const b = document.getElementsByTagName("input")[1].value;
+			const xmlhttp = new XMLHttpRequest();
+			xmlhttp.open("GET","/add?a=" + a + "&b=" + b);
+			xmlhttp.onreadystatechange = function(){
+			  if(xmlhttp.readyState == 4) {
+				  document.getElementsByTagName("input")[2].value = xmlhttp.responseText
+			  }
+			};
+			xmlhttp.send();
+		} 
+	}
+</script>
+</body>
+</html>
