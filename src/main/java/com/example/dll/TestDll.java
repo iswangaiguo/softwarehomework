@@ -25,22 +25,22 @@ public class TestDll implements ActionListener{
 	private void init() {
 		JFrame jFrame = new JFrame("调用AddDll程序");
 		jFrame.setSize(400, 200);
-		jFrame.setLocation(400, 200);
+		jFrame.setLocation(700, 350);
 		jFrame.setLayout(null);
 		JPanel jPanel = new JPanel();
 		number1 = new JTextField();
 		number1.setColumns(8);
-		//number1.setPreferredSize(new Dimension(40, 30));
+		number1.setPreferredSize(new Dimension(40, 30));
 		JLabel add = new JLabel("+");
 		number2 = new JTextField();
 		number2.setColumns(8);
-		//number2.setPreferredSize(new Dimension(40, 30));
+		number2.setPreferredSize(new Dimension(40, 30));
 		equal = new JButton("=");
 		equal.addActionListener(this);
 		result = new JTextField();
-		result.setEnabled(false);
+		result.setEditable(false);
 		result.setColumns(8);
-		//result.setPreferredSize(new Dimension(40, 30));
+		result.setPreferredSize(new Dimension(40, 30));
 		jPanel.add(number1);
 		jPanel.add(add);
 		jPanel.add(number2);
